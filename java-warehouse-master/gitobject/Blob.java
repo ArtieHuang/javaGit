@@ -6,13 +6,9 @@ import zlib.ZLibUtils;
 import java.io.*;
 
 public class Blob extends GitObject{
-    
-	public String getFmt(){
-        return fmt;
-    }
-    public String getMode(){
-        return mode;
-    }
+
+    public String getFmt(){return fmt;}
+    public String getMode(){return mode;}
     public String getPath() {
         return path;
     }
@@ -30,7 +26,7 @@ public class Blob extends GitObject{
         fmt = "blob";
         mode = "100644";
         value = getValue(file);
-        genKey(file);
+        key = genKey(file);
         compressWrite();
     }
 
@@ -41,27 +37,27 @@ public class Blob extends GitObject{
      */
     public static Blob deserialize(String Id) throws IOException {
         try{
-        /**
-         * Todo: Add your code here.
-         */
+            Blob blob = new Blob();
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Id));
+            blob.key = SHA1.getHash(Id);
         }catch (Exception e){
             e.printStackTrace();
         }
-        /* Todo: You should delete the return statement before you start. */
         return new Blob();
     }
-
     /**
      * Generate key from file.
      * @param file
      * @return String
      * @throws Exception
      */
+
     public String genKey(File file) throws Exception {
         /**
          * Add your code here.
          */
-        return key;
+        return sha1.SHA1.getHash(file);
+
     }
     @Override
     public String toString(){

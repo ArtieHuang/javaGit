@@ -1,5 +1,9 @@
 package repository;
 
+import core.JitInit;
+import fileoperation.FileCreation;
+import fileoperation.FileDeletion;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -58,9 +62,18 @@ public class Repository {
      * @throws IOException
      */
     public void createRepo() throws IOException {
-    /* Todo：Add your code here. */
-
+        FileCreation.createDirectory(workTree, ".jit");
+        FileCreation.createFile(gitDir, "HEAD", "ref: refs/heads/master\n");
+        FileCreation.createDirectory(gitDir, "branches");
+        FileCreation.createDirectory(gitDir, "config");
+        FileCreation.createDirectory(gitDir, "description");
+        FileCreation.createDirectory(gitDir, "hooks");
+        FileCreation.createDirectory(gitDir, "info");
+        FileCreation.createDirectory(gitDir, "logs");
+        FileCreation.createDirectory(gitDir, "objects");
+        FileCreation.createDirectory(gitDir, "refs");
 
     }
+
 
 }
